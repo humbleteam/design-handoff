@@ -20,7 +20,7 @@ If no token set is given, say so in the output and derive a draft one from the m
 
 One markdown file per screen, named `<screen-slug>-handoff.md`, following the eight-section structure in [`references/handoff-template.md`](references/handoff-template.md). Read that file for the exact skeleton to copy before writing the first spec.
 
-**Decide screen count first.** If two or more inputs show the same layout with only a component's state changed (a button in default and hover, a form before and after an error), that is ONE screen - merge the evidence into section 4 of a single spec. If the inputs show different screens, routes, or breakpoints, write one spec file per screen. For a screen supplied at multiple breakpoints, write one file per screen and add a subsection per breakpoint under section 2 (Layout) rather than duplicating the whole file.
+**Decide screen count first.** If two or more inputs show the same layout with only a component's state changed (a button in default and hover, a form before and after an error), that is ONE screen - merge the evidence into section 4 of a single spec. The same layout in a second theme (light and dark) is also ONE screen - see Edge cases for how the token map carries both. If the inputs show different screens, routes, or breakpoints, write one spec file per screen. For a screen supplied at multiple breakpoints, write one file per screen and add a subsection per breakpoint under section 2 (Layout) rather than duplicating the whole file.
 
 ## The spine: never invent what you can't see
 
@@ -91,6 +91,7 @@ Number continuously across the whole spec (the numbers referenced inline in sect
 - **Low-resolution or cropped screenshot.** Mark affected values `(estimated)`. If the uncertain value would change an implementation decision (a token match, a contrast ratio near the WCAG threshold), add it to open questions instead of stating it as fact.
 - **HTML input with both inline styles and CSS classes on the same element.** Prefer the computed/rendered style over a raw inline attribute when they conflict; note the conflict in section 3 if it affects a mapped token.
 - **A component that only appears once and has no clear interactive affordance** (e.g., a static badge). Skip section 4 for it entirely rather than filling in eight rows of `not applicable`.
+- **The same screen supplied in light and dark theme.** One screen, one spec file. Split the observed-value column of section 3 into one column per theme (`Observed (light)`, `Observed (dark)`) so each property keeps a single row and a single token name carrying both values. A value present in only one theme is a `NEW-TOKEN` for that theme, not a conflict, and it does not trigger the conflict rule above. Section 6 then checks contrast once per theme, not once per pair: a foreground and background that clear 4.5:1 on a white surface can fail on the dark one, and a single ratio hides it.
 
 ## After writing
 

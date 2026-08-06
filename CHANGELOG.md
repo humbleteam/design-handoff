@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.1.0] - 2026-08-06
+
+- Theme variants handled: a screen supplied in light and dark is one screen and one spec file. Section 3 splits the observed-value column per theme, a value present in only one theme is a `NEW-TOKEN` rather than a conflict, and section 6 checks contrast once per theme.
+- `references/handoff-template.md` documents the per-theme token-map columns.
+
 ## [1.0.0] - 2026-07-12
 
 - Initial release: the eight-section handoff spec format (screen summary, layout, token map, component inventory, behavior notes, accessibility annotations, assets list, open questions).

@@ -71,3 +71,4 @@ Read this when you are about to write a spec file. Copy the skeleton below, fill
 - Section numbers in the open-questions list must match the `OPEN QUESTION #n` references used earlier in the spec.
 - A component with no plausible interactive state (a static badge, a label) does not get a subsection in section 4 - skip it rather than filling eight rows with `not applicable`.
 - If no token set was supplied for this screen, every row in section 3 reads `NEW-TOKEN` and the spec should say near the top that none of the proposed tokens are confirmed against an existing system.
+- If the screen was supplied in more than one theme, split "Observed value" in section 3 into one column per theme (`Observed (light)`, `Observed (dark)`) and keep one row per property. Still one spec file, not one per theme. Section 6 lists a contrast ratio per theme for each pair.
