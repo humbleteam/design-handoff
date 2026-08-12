@@ -73,15 +73,22 @@ Transitions, scroll behavior (sticky headers, infinite scroll, parallax), and va
 
 ### 7. Assets list
 
-Every image, icon, or illustration that needs export: recommended format (SVG for icons and illustrations, PNG or WebP for photos), and size(s) - `@1x/@2x/@3x` for raster assets, single file for vector.
+Every image, icon, or illustration that needs export: recommended format (SVG for icons and illustrations, PNG or WebP for photos), and size(s) - a single file for vector, a density ladder for raster.
+
+Format is a recommendation and may be written as one. Two things in this section are not recommendations, and the spine applies to them exactly as it does everywhere else:
+
+- **Which density ladder a raster asset needs.** That depends on the platforms being built for, and a mockup does not name them. Write `@1x/@2x/@3x` only when the source or the brief states the target platforms. Otherwise write it as the stated default and raise an `OPEN QUESTION` on the platforms, because a web-only build and an iOS build do not export the same set.
+- **Whether an element is an exported asset at all.** A chevron, a divider, a gradient, or a rounded avatar frame may be an SVG file, an icon-font glyph, or drawn entirely in CSS, and a static image cannot tell you which. Where it is ambiguous, raise an `OPEN QUESTION` rather than listing the row as an export or leaving it out. A missing row reads as "no asset needed", and that is a decision the source never made.
 
 ### 8. Open questions
 
-Collect every `OPEN QUESTION` raised in sections 2 through 6 into one numbered list. Tag each:
+Collect every `OPEN QUESTION` raised in sections 2 through 7 into one numbered list. Tag each:
 - `BLOCKING` - implementation cannot proceed correctly without an answer.
 - `NON-BLOCKING` - implementation can proceed with a stated reasonable default, revisit before ship.
 
-Number continuously across the whole spec (the numbers referenced inline in sections 2-6 must match this list).
+Number continuously across the whole spec (the numbers referenced inline in sections 2-7 must match this list).
+
+The range is 2 through 7, not 2 through 6. Section 7 is where the source is most often silent - target platforms and CSS-versus-asset calls are decisions a mockup does not record - and a question raised there needs the same numbered home as any other. Anything with nowhere to be collected gets written as fact instead, which is the failure this section exists to prevent.
 
 ## Edge cases
 

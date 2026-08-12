@@ -32,7 +32,7 @@ Design handoff is a Claude Code skill that reads a mockup, screenshot, or HTML p
 - Maps every color, font, spacing value, radius, and shadow to an existing design token, or flags it `NEW-TOKEN`.
 - Enumerates the eight canonical component states - default, hover, focus, active, disabled, loading, empty, error - flagging whatever the source doesn't show.
 - Writes accessibility annotations: landmark roles, accessible names, a focus order, and WCAG 2.2 contrast ratios.
-- Lists every asset to export, with a recommended format and size.
+- Lists every asset to export, with a recommended format and size - and raises an open question where the source cannot settle the density ladder or whether an element is an asset at all.
 - Closes every spec with a numbered, blocking/non-blocking open-questions list.
 
 ## Quick start
@@ -108,6 +108,7 @@ Source shows default state only - table below is mostly open questions by design
 - **Accessibility annotations cite WCAG 2.2 success criteria** by number (SC 1.4.3 text contrast, SC 1.4.11 non-text UI components).
 - **Conflicting evidence is flagged, not resolved.** Two screenshots with different padding for one region produce a documented conflict, not an average.
 - **Every open question is tagged blocking or non-blocking**, so a reviewer can tell if the spec is ready to build.
+- **The assets list is held to the same standard as the rest.** A raster asset's `@1x/@2x/@3x` ladder follows from the target platforms, and a mockup does not name them; a divider or chevron may be an exported file or pure CSS. Both become numbered open questions rather than confident spec lines.
 
 ## How is this different from just asking the model?
 

@@ -59,7 +59,8 @@ Read this when you are about to write a spec file. Copy the skeleton below, fill
 | Asset | Format | Size(s) | Notes |
 |---|---|---|---|
 | <e.g. hero-icon> | SVG | single | |
-| <e.g. avatar-photo> | WebP | @1x/@2x/@3x | |
+| <e.g. avatar-photo> | WebP | @1x/@2x/@3x (default) | Target platforms not stated - `OPEN QUESTION #n` |
+| <e.g. card-divider> | `OPEN QUESTION #n` | - | May be a 1px CSS border rather than an exported asset |
 
 ## 8. Open questions
 1. [BLOCKING / NON-BLOCKING] <question, tied to the section it came from>
@@ -68,7 +69,8 @@ Read this when you are about to write a spec file. Copy the skeleton below, fill
 
 ## Notes on filling this in
 
-- Section numbers in the open-questions list must match the `OPEN QUESTION #n` references used earlier in the spec.
+- Section numbers in the open-questions list must match the `OPEN QUESTION #n` references used earlier in the spec. Section 7 counts: questions raised in the assets list are collected in section 8 alongside every other one.
+- Section 7 holds two values a mockup almost never states - the density ladder, which follows from the target platforms, and whether a visual element is an exported asset or drawn in CSS. Write the default and raise a question rather than presenting either as observed.
 - A component with no plausible interactive state (a static badge, a label) does not get a subsection in section 4 - skip it rather than filling eight rows with `not applicable`.
 - If no token set was supplied for this screen, every row in section 3 reads `NEW-TOKEN` and the spec should say near the top that none of the proposed tokens are confirmed against an existing system.
 - If the screen was supplied in more than one theme, split "Observed value" in section 3 into one column per theme (`Observed (light)`, `Observed (dark)`) and keep one row per property. Still one spec file, not one per theme. Section 6 lists a contrast ratio per theme for each pair.
