@@ -106,7 +106,7 @@ Source shows default state only - table below is mostly open questions by design
 - **Token matching uses a tolerance.** A value within a few pixels, or a close color match, counts as that token; anything else is `NEW-TOKEN`.
 - **Component states are checked against a fixed list of eight**: default, hover, focus, active, disabled, loading, empty, error.
 - **Accessibility annotations cite WCAG 2.2 success criteria** by number (SC 1.4.3 text contrast, SC 1.4.11 non-text UI components).
-- **Conflicting evidence is flagged, not resolved.** Two screenshots with different padding for one region produce a documented conflict, not an average.
+- **Conflicting evidence is flagged, not resolved.** Two screenshots with different padding for one region produce a documented conflict, not an average - as long as both claim the same theme and breakpoint. The same region at two declared breakpoints, or in light and dark, is a variant carried as two columns in the token map, not a disagreement to resolve.
 - **Every open question is tagged blocking or non-blocking**, so a reviewer can tell if the spec is ready to build.
 - **The assets list is held to the same standard as the rest.** A raster asset's `@1x/@2x/@3x` ladder follows from the target platforms, and a mockup does not name them; a divider or chevron may be an exported file or pure CSS. Both become numbered open questions rather than confident spec lines.
 
@@ -130,6 +130,9 @@ Dimensions, layout measurements, token mapping, all eight component states, acce
 
 **Can Claude generate a design handoff spec from a screenshot?**
 Yes - paste the screenshot with a prompt like "write a handoff spec for this screen". Dimensions get marked `(estimated)` when the screenshot lacks exact pixel data.
+
+**Can one handoff spec cover mobile and desktop?**
+Yes. Breakpoints of the same screen stay in one file: section 2 gets a subsection per breakpoint, and the token map splits its observed-value column into one column per breakpoint while keeping one row and one token name per property. A padding that steps from 16px to 32px is a variant of one screen, not conflicting evidence - the same handling a light and dark pair of the same screen gets.
 
 **What's the difference between a design handoff spec and a style guide?**
 A style guide documents a design system's tokens in general. A handoff spec documents one screen against that system: which tokens it uses, what's unresolved.

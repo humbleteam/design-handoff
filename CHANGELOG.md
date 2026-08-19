@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.3.0] - 2026-08-19
+
+- A spec covering two breakpoints had no legal token map. The output rules explicitly keep multiple breakpoints of one screen in one file, with a subsection per breakpoint under section 2, while section 3 kept a single "Observed value" column and required every property to appear "exactly once each". A card padding of 16px at 375 and 32px at 1440 therefore had no way to be recorded: two rows break the no-repeats rule, one row drops a measurement the source actually gave, and the only nearby rule - flag conflicting sources - misfiles an intentional responsive step as a discrepancy and sends the developer back with a question that has no answer.
+- Generalized the per-theme handling added in 1.1.0 into one rule for declared conditions, theme and breakpoint alike: one column per condition in section 3, one row and one token name per property, a differing value is a variant and a one-condition value is a `NEW-TOKEN` for that condition.
+- Defined a conflict, which was previously left to the reader: two sources claiming the same condition and disagreeing. A difference across a declared condition is not one, so the conflict rule no longer swallows responsive and theme variation.
+- Section 1 records one named dimensions line per breakpoint. One line cannot describe two viewports, and picking one silently drops a measured value.
+- `references/handoff-template.md` carries the same rule in all three places it appears, and the README adds an FAQ answer on covering mobile and desktop in one spec.
+
 ## [1.2.0] - 2026-08-12
 
 - Section 8 now collects open questions from sections 2 through 7, not 2 through 6. Section 7 was outside the range while still asking for values a mockup cannot show, so a question raised there had no numbered home and got written as a confident spec line instead - the exact failure the no-invention spine exists to prevent.

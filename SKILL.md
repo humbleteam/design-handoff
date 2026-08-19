@@ -20,7 +20,7 @@ If no token set is given, say so in the output and derive a draft one from the m
 
 One markdown file per screen, named `<screen-slug>-handoff.md`, following the eight-section structure in [`references/handoff-template.md`](references/handoff-template.md). Read that file for the exact skeleton to copy before writing the first spec.
 
-**Decide screen count first.** If two or more inputs show the same layout with only a component's state changed (a button in default and hover, a form before and after an error), that is ONE screen - merge the evidence into section 4 of a single spec. The same layout in a second theme (light and dark) is also ONE screen - see Edge cases for how the token map carries both. If the inputs show different screens, routes, or breakpoints, write one spec file per screen. For a screen supplied at multiple breakpoints, write one file per screen and add a subsection per breakpoint under section 2 (Layout) rather than duplicating the whole file.
+**Decide screen count first.** If two or more inputs show the same layout with only a component's state changed (a button in default and hover, a form before and after an error), that is ONE screen - merge the evidence into section 4 of a single spec. The same layout in a second theme (light and dark) is also ONE screen - see Edge cases for how the token map carries both. If the inputs show different screens, routes, or breakpoints, write one spec file per screen. For a screen supplied at multiple breakpoints, write one file per screen and add a subsection per breakpoint under section 2 (Layout) rather than duplicating the whole file. Theme and breakpoint are the two declared conditions one spec can carry at once; sections 1, 3, and 6 each carry them differently - see Edge cases.
 
 ## The spine: never invent what you can't see
 
@@ -35,11 +35,11 @@ A spec with ten open questions because the source only shows one state is doing 
 
 ### 1. Screen summary
 
-Record dimensions (from image size, HTML viewport, or a stated breakpoint - mark `(estimated)` if inferred from proportions rather than measured), a one-sentence purpose, and how many source images or files fed this spec.
+Record dimensions (from image size, HTML viewport, or a stated breakpoint - mark `(estimated)` if inferred from proportions rather than measured), a one-sentence purpose, and how many source images or files fed this spec. A spec covering more than one breakpoint records one named dimensions line per breakpoint: a single line cannot describe two viewports, and picking one silently drops a measurement the source actually gave you.
 
 ### 2. Layout
 
-Walk the screen in reading order (top to bottom, left to right within a row) and list every region: name, position or size, internal padding, and the gap to the next region. Use whatever units the source supports - exact pixels from HTML/CSS, or `(estimated)` proportions from a static image. If two sources of the same screen show conflicting spacing (e.g., two screenshots at slightly different padding), flag the conflict explicitly in this section. Do not average the two values and do not silently pick one.
+Walk the screen in reading order (top to bottom, left to right within a row) and list every region: name, position or size, internal padding, and the gap to the next region. Use whatever units the source supports - exact pixels from HTML/CSS, or `(estimated)` proportions from a static image. If two sources of the same screen show conflicting spacing (e.g., two screenshots at slightly different padding), flag the conflict explicitly in this section. Do not average the two values and do not silently pick one. A conflict means two sources claim the same condition - same theme, same breakpoint - and disagree. Two sources showing different values under different declared conditions are variants of one screen, not a conflict, and they belong in the per-condition columns described in Edge cases.
 
 ### 3. Token map
 
@@ -48,6 +48,7 @@ List every distinct color, font, spacing value, corner radius, and shadow that a
 - If a token set was provided, match each observed value to the nearest existing token. Use a small tolerance (a few px for spacing, a close visual neighbor for color) - if nothing matches within that tolerance, the value is new.
 - Values with no match get `NEW-TOKEN: <proposed-name>` in the mapped-token column, following the naming convention of the existing tokens if one is visible (e.g., `color-<role>`, `space-<n>`, `radius-<size>`), or a plain role-based kebab-case name if there is no existing convention to follow.
 - If no token set was provided at all, every row is `NEW-TOKEN` - draft a full proposed set, and say plainly in the spec that none of it is confirmed against a real system yet.
+- A spec covering more than one declared condition - two themes, or two breakpoints - splits the observed-value column into one column per condition and keeps one row per property. "Exactly once each" counts rows, not observed values: the property appears once, carrying every value the source showed for it.
 
 ### 4. Component inventory
 
@@ -98,7 +99,7 @@ The range is 2 through 7, not 2 through 6. Section 7 is where the source is most
 - **Low-resolution or cropped screenshot.** Mark affected values `(estimated)`. If the uncertain value would change an implementation decision (a token match, a contrast ratio near the WCAG threshold), add it to open questions instead of stating it as fact.
 - **HTML input with both inline styles and CSS classes on the same element.** Prefer the computed/rendered style over a raw inline attribute when they conflict; note the conflict in section 3 if it affects a mapped token.
 - **A component that only appears once and has no clear interactive affordance** (e.g., a static badge). Skip section 4 for it entirely rather than filling in eight rows of `not applicable`.
-- **The same screen supplied in light and dark theme.** One screen, one spec file. Split the observed-value column of section 3 into one column per theme (`Observed (light)`, `Observed (dark)`) so each property keeps a single row and a single token name carrying both values. A value present in only one theme is a `NEW-TOKEN` for that theme, not a conflict, and it does not trigger the conflict rule above. Section 6 then checks contrast once per theme, not once per pair: a foreground and background that clear 4.5:1 on a white surface can fail on the dark one, and a single ratio hides it.
+- **The same screen supplied under more than one declared condition** - light and dark theme, or two breakpoints such as 375 and 1440. One screen, one spec file. Split the observed-value column of section 3 into one column per condition (`Observed (light)` / `Observed (dark)`, or `Observed (375)` / `Observed (1440)`) so each property keeps a single row and a single token name carrying every value. A value that differs across conditions is a variant, and a value present under only one condition is a `NEW-TOKEN` for that condition. Neither is a conflict, and neither triggers the conflict rule above, which fires only when two sources claim the same condition and disagree. This matters more than tidiness: card padding of 16px at 375 and 32px at 1440 filed as a conflict sends the developer back with a question that has no answer, and filed as one row with one value hands them the wrong build at the other breakpoint. Section 6 then checks contrast once per theme, not once per pair: a foreground and background that clear 4.5:1 on a white surface can fail on the dark one, and a single ratio hides it. Breakpoints do not change color, so one check per theme covers every breakpoint.
 
 ## After writing
 
