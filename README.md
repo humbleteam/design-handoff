@@ -68,7 +68,7 @@ Excerpt from a spec for a fictional pricing card, default state only, no token s
 
 **Source:** pricing-card.png (1 screenshot, default state only)
 **Date:** 2026-07-12
-**Status:** Draft - 3 open questions, 1 blocking
+**Status:** Draft - 7 open questions, 1 blocking
 
 ## 1. Screen summary
 - Dimensions: 360 x 480 px (desktop, single card)
@@ -90,12 +90,20 @@ Source shows default state only - table below is mostly open questions by design
 | Default | yes | fill `primary`, label 15px/600, 12px vertical padding |
 | Hover | no | OPEN QUESTION #1 |
 | Focus | no | OPEN QUESTION #2 |
-| Disabled | no | not applicable - plan is always selectable in this flow |
+| Active | no | OPEN QUESTION #3 |
+| Disabled | no | OPEN QUESTION #4 |
+| Loading | no | OPEN QUESTION #5 |
+| Empty | no | not applicable - a button with a fixed label holds no content that can be empty |
+| Error | no | OPEN QUESTION #6 |
 
 ## 8. Open questions
 1. [BLOCKING] CTA hover fill not shown in source - need the color before implementation.
 2. [NON-BLOCKING] CTA focus ring not shown - proposing a 2px `primary` outline as a platform default; confirm before ship.
-3. [NON-BLOCKING] No token set was supplied - all three tokens above are proposed, not confirmed against a real system.
+3. [NON-BLOCKING] CTA pressed state not shown - needs a fill or a transform before build.
+4. [NON-BLOCKING] Whether a plan can be unselectable at all - an already-current plan, a sold-out tier - is a flow fact one card image cannot show; needed before a disabled style is specified.
+5. [NON-BLOCKING] No loading state shown - confirm whether choosing a plan blocks on a request or navigates straight away.
+6. [NON-BLOCKING] No error state shown - confirm whether a failed selection surfaces on this button or elsewhere on the screen.
+7. [NON-BLOCKING] No token set was supplied - all three tokens above are proposed, not confirmed against a real system.
 ```
 
 ## How it works

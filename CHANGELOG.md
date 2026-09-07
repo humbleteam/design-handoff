@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.3.1] - 2026-09-07
+
+- README example: the CTA button's state table listed four of the eight canonical states, dropping active, loading, empty, and error with no mark of any kind. Step 4 requires all eight enumerated for every interactive component, each ending in a spec line, a `not applicable` with a one-clause reason, or a numbered open question - so the worked example showed the fixed roster being shortened, which is the move the fixed roster exists to prevent.
+- The `Disabled` row read `not applicable - plan is always selectable in this flow`. One default-state screenshot of one card cannot show what the flow does with an already-current plan or a sold-out tier, so that reason asserted a fact the source never carried - the invention the spine exists to stop, written into the example that teaches the spine. Disabled is now an open question. The one `not applicable` left is `Empty`, whose reason is readable from the artifact itself: a button with a fixed label holds no content that can be empty.
+- Open questions renumbered to 7, and the Status line now says 7. The old count of 3 was only correct because half the roster was missing, so the two errors had been hiding each other.
+
 ## [1.3.0] - 2026-08-19
 
 - A spec covering two breakpoints had no legal token map. The output rules explicitly keep multiple breakpoints of one screen in one file, with a subsection per breakpoint under section 2, while section 3 kept a single "Observed value" column and required every property to appear "exactly once each". A card padding of 16px at 375 and 32px at 1440 therefore had no way to be recorded: two rows break the no-repeats rule, one row drops a measurement the source actually gave, and the only nearby rule - flag conflicting sources - misfiles an intentional responsive step as a discrepancy and sends the developer back with a question that has no answer.
