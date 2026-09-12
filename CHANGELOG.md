@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.4.0] - 2026-09-12
+
+- The declared-condition rule stopped one section short. 1.3.0 generalized theme and breakpoint into one rule and named the sections that carry it - 1 takes a dimensions line per breakpoint, 3 splits its observed-value column, 6 checks contrast per theme - while section 4 was left with a single `Visible in source?` column and a single spec line, and a component's fill and padding are exactly the values a theme and a breakpoint change.
+- What that left with no legal answer: a CTA screenshotted in light and dark. One spec line holds one fill, so the writer either dropped a value the source gave - the failure 1.3.0 fixed for section 1 - or wrote the light fill as the spec for both, which is the invention the spine exists to stop, in the section where it looks most like a measurement.
+- Section 4 now splits both columns per condition and keeps one row per state, the same shape section 3 uses. A state seen under one condition reads `yes` / `no` and its spec line covers only that condition; the other condition is an `OPEN QUESTION`, never the first one's values reused; a state identical under every condition supplied is written once with those conditions named, because one line for one observation is accurate and a copied line claims a reading that never happened.
+- The Output paragraph's roster of sections that carry a declared condition now names 4 alongside 1, 3, and 6, so the list matches the rules underneath it.
+- `references/handoff-template.md`: the section 4 table carries the per-condition note, and the filling-in note on declared conditions names section 4. README: the mobile-and-desktop answer says the state table splits too.
+
 ## [1.3.1] - 2026-09-07
 
 - README example: the CTA button's state table listed four of the eight canonical states, dropping active, loading, empty, and error with no mark of any kind. Step 4 requires all eight enumerated for every interactive component, each ending in a spec line, a `not applicable` with a one-clause reason, or a numbered open question - so the worked example showed the fixed roster being shortened, which is the move the fixed roster exists to prevent.

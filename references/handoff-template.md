@@ -44,6 +44,8 @@ Read this when you are about to write a spec file. Copy the skeleton below, fill
 | Empty | yes/no | ... |
 | Error | yes/no | ... |
 
+(Under more than one declared condition, keep one row per state and carry both columns per condition: `Visible in source? (light)` / `Visible in source? (dark)`, or `(375)` / `(1440)`, with one spec line per condition. A state shown under one condition only is an `OPEN QUESTION #n` for the other, never the first condition's values reused.)
+
 ## 5. Behavior notes
 - Transitions: <only what's shown or stated, else `OPEN QUESTION #n`>
 - Scroll behavior: <sticky/infinite/parallax, or `OPEN QUESTION #n`>
@@ -74,4 +76,4 @@ Read this when you are about to write a spec file. Copy the skeleton below, fill
 - Section 7 holds two values a mockup almost never states - the density ladder, which follows from the target platforms, and whether a visual element is an exported asset or drawn in CSS. Write the default and raise a question rather than presenting either as observed.
 - A component with no plausible interactive state (a static badge, a label) does not get a subsection in section 4 - skip it rather than filling eight rows with `not applicable`.
 - If no token set was supplied for this screen, every row in section 3 reads `NEW-TOKEN` and the spec should say near the top that none of the proposed tokens are confirmed against an existing system.
-- If the screen was supplied under more than one declared condition - two themes, or two breakpoints - split "Observed value" in section 3 into one column per condition (`Observed (light)` / `Observed (dark)`, or `Observed (375)` / `Observed (1440)`) and keep one row per property. Still one spec file, not one per condition. A value that differs across conditions is a variant, not conflicting evidence; the conflict rule fires only when two sources claim the same condition and disagree. Section 6 lists a contrast ratio per theme for each pair, and breakpoints need no extra check because they do not change color.
+- If the screen was supplied under more than one declared condition - two themes, or two breakpoints - split "Observed value" in section 3 into one column per condition (`Observed (light)` / `Observed (dark)`, or `Observed (375)` / `Observed (1440)`) and keep one row per property. Still one spec file, not one per condition. A value that differs across conditions is a variant, not conflicting evidence; the conflict rule fires only when two sources claim the same condition and disagree. Section 6 lists a contrast ratio per theme for each pair, and breakpoints need no extra check because they do not change color. Section 4 splits its two columns per condition on the same rule: one row per state, and a state seen under one condition is not recorded as observed under the other.

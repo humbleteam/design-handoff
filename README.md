@@ -140,7 +140,7 @@ Dimensions, layout measurements, token mapping, all eight component states, acce
 Yes - paste the screenshot with a prompt like "write a handoff spec for this screen". Dimensions get marked `(estimated)` when the screenshot lacks exact pixel data.
 
 **Can one handoff spec cover mobile and desktop?**
-Yes. Breakpoints of the same screen stay in one file: section 2 gets a subsection per breakpoint, and the token map splits its observed-value column into one column per breakpoint while keeping one row and one token name per property. A padding that steps from 16px to 32px is a variant of one screen, not conflicting evidence - the same handling a light and dark pair of the same screen gets.
+Yes. Breakpoints of the same screen stay in one file: section 2 gets a subsection per breakpoint, and the token map splits its observed-value column into one column per breakpoint while keeping one row and one token name per property. A padding that steps from 16px to 32px is a variant of one screen, not conflicting evidence - the same handling a light and dark pair of the same screen gets. The component-state table splits the same way: one row per state, with what the source showed carried per breakpoint, so a state shown at one width is never recorded as observed at the other.
 
 **What's the difference between a design handoff spec and a style guide?**
 A style guide documents a design system's tokens in general. A handoff spec documents one screen against that system: which tokens it uses, what's unresolved.
