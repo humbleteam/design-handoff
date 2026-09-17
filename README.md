@@ -131,7 +131,7 @@ Exact dimensions, layout measurements, a token map, all component states, behavi
 Separate what's visible - measurements, colors, states - from what you're assuming, and keep assumptions in a numbered open-questions section, not spec lines.
 
 **How do I document component states?**
-Check every interactive element against a fixed list: default, hover, focus, active, disabled, loading, empty, error. Most mockups only show 2-3; mark the rest as open questions.
+Check every interactive element against a fixed list: default, hover, focus, active, disabled, loading, empty, error. Most mockups show only two or three. Each of the rest gets `not applicable` with a reason you can read off the artifact - a button with a fixed label holds no content that can be empty - or a numbered open question. A reason that needs a fact the source never showed is an invention, not a dismissal.
 
 **What is a design handoff checklist?**
 Dimensions, layout measurements, token mapping, all eight component states, accessibility roles and contrast, an asset list, and open questions. `references/handoff-template.md` in this repo is that checklist.
@@ -146,7 +146,7 @@ Yes. Breakpoints of the same screen stay in one file: section 2 gets a subsectio
 A style guide documents a design system's tokens in general. A handoff spec documents one screen against that system: which tokens it uses, what's unresolved.
 
 **How many states should I document for a button?**
-Up to eight - default, hover, focus, active, disabled, loading, empty, error - though a button with no loading behavior skips that row. The point is deciding each state, not hitting a count.
+Eight, every time - default, hover, focus, active, disabled, loading, empty, error. The count is fixed; what varies is how each row is answered. A state visible in the source gets a spec line, a state the artifact itself rules out gets `not applicable` with a one-clause reason, and everything else becomes a numbered open question. There is no fourth answer, and "this button probably has no loading state" is not one of the three: whether choosing a plan blocks on a request is a flow fact, and a static mockup does not carry it. A whole component can be skipped - a static badge with no interactive affordance gets no table at all - but a row inside a table never is, because a row nobody answered reads exactly like a state nobody needs.
 
 ## Related skills
 

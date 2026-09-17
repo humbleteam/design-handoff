@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.0] - 2026-09-17
+
+- The FAQ gave the fixed eight states away in one answer. "How many states should I document for a button?" read "up to eight ... though a button with no loading behavior skips that row", which contradicts Step 4 on both halves: the roster is enumerated exactly, not up to a ceiling, and a row has exactly three legal marks - a spec line, `not applicable` with a one-clause reason, or a numbered open question. Skipping is a fourth, and it is the move 1.3.1 removed from the worked example on 2026-09-07, so the README went on granting in prose what the example had been fixed for.
+- The skip wording had been borrowed from a rule one level up. A whole component with no plausible interactive state is skipped - a static badge gets no table, per Edge cases and the template's third filling-in note - and that is what makes the roster affordable. A row inside a table is never skipped, because a row nobody answered reads exactly like a state nobody needs.
+- The answer's own premise was the invention the spine exists to stop. "A button with no loading behavior" is a flow fact, and a static mockup does not carry it; the repo's example says so two screens earlier, where the unshown loading state is open question 5 asking whether choosing a plan blocks on a request. The answer now names the three marks, says there is no fourth, and gives that non-answer as the example of what is not one of them.
+- "How do I document component states?" ended "mark the rest as open questions", dropping the `not applicable` mark the same example uses for Empty. It now names both, with the test between them: a reason has to be readable off the artifact, and a reason that needs a fact the source never showed is an invention rather than a dismissal.
+
 ## [1.4.0] - 2026-09-12
 
 - The declared-condition rule stopped one section short. 1.3.0 generalized theme and breakpoint into one rule and named the sections that carry it - 1 takes a dimensions line per breakpoint, 3 splits its observed-value column, 6 checks contrast per theme - while section 4 was left with a single `Visible in source?` column and a single spec line, and a component's fill and padding are exactly the values a theme and a breakpoint change.
