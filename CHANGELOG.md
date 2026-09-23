@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.6.0] - 2026-09-23
+
+- The declared-condition rule reached section 6 for one of its two annotations. 1.3.0 generalized theme and breakpoint into one rule and listed the sections that carry it, and the entry for section 6 was "checks contrast per theme", with the edge case closing "breakpoints do not change color, so one check per theme covers every breakpoint". That is true of contrast and says nothing about the focus order sitting two bullets above it, while reading it as the whole of section 6 is the natural reading, since it is the only sentence in the repo about section 6 under two conditions.
+- What that left with no legal answer: one screen at 375 and 1440 where the sidebar sits beside the main column at the wide width and stacks below it at the narrow one. Section 2 already walks each breakpoint in its own reading order, section 6 asked for "a proposed focus order matching reading order", singular, so the writer either picked one width and dropped an order the source gave, which is the failure the per-breakpoint dimensions line in section 1 exists to prevent, or wrote one list that matches neither layout.
+- Section 6 now writes one numbered focus order per breakpoint whose section 2 reading order differs, each naming its breakpoint. Breakpoints that share a reading order get one list naming the breakpoints it covers, the same "one line for one observation" rule section 4 uses, and a theme never gets a list of its own, because a repaint does not move a region.
+- Contrast and focus order now split on one axis each. Contrast is checked per theme and covers every breakpoint, focus order is written per distinct breakpoint order and covers every theme, and neither is borrowed for the other. The section's other two bullets, landmark roles and accessible names, are untouched by this entry.
+- `references/handoff-template.md`: the focus-order slot carries the per-breakpoint form, and the filling-in note on declared conditions names it next to the contrast sentence. README: the mobile-and-desktop answer says the accessibility annotations split too, and says which one splits on which axis.
+
 ## [1.5.0] - 2026-09-17
 
 - The FAQ gave the fixed eight states away in one answer. "How many states should I document for a button?" read "up to eight ... though a button with no loading behavior skips that row", which contradicts Step 4 on both halves: the roster is enumerated exactly, not up to a ceiling, and a row has exactly three legal marks - a spec line, `not applicable` with a one-clause reason, or a numbered open question. Skipping is a fourth, and it is the move 1.3.1 removed from the worked example on 2026-09-07, so the README went on granting in prose what the example had been fixed for.
