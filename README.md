@@ -68,7 +68,7 @@ Excerpt from a spec for a fictional pricing card, default state only, no token s
 
 **Source:** pricing-card.png (1 screenshot, default state only)
 **Date:** 2026-07-12
-**Status:** Draft - 7 open questions, 1 blocking
+**Status:** Draft - 7 open questions, 2 blocking
 
 ## 1. Screen summary
 - Dimensions: 360 x 480 px (desktop, single card)
@@ -97,14 +97,16 @@ Source shows default state only - table below is mostly open questions by design
 | Error | no | OPEN QUESTION #6 |
 
 ## 8. Open questions
-1. [BLOCKING] CTA hover fill not shown in source - need the color before implementation.
-2. [NON-BLOCKING] CTA focus ring not shown - proposing a 2px `primary` outline as a platform default; confirm before ship.
-3. [NON-BLOCKING] CTA pressed state not shown - needs a fill or a transform before build.
-4. [NON-BLOCKING] Whether a plan can be unselectable at all - an already-current plan, a sold-out tier - is a flow fact one card image cannot show; needed before a disabled style is specified.
-5. [NON-BLOCKING] No loading state shown - confirm whether choosing a plan blocks on a request or navigates straight away.
-6. [NON-BLOCKING] No error state shown - confirm whether a failed selection surfaces on this button or elsewhere on the screen.
-7. [NON-BLOCKING] No token set was supplied - all three tokens above are proposed, not confirmed against a real system.
+1. [BLOCKING] CTA hover fill not shown in source. A hovered button exists whether or not it is styled, so there is nothing to leave unbuilt, and no standard this spec cites sets a hover color - deriving one from `primary` is the guess the spine bans. No default statable.
+2. [NON-BLOCKING] CTA focus ring not shown. Default: a 2px `primary` outline, offset 2px. Section 6 cites WCAG 2.2 SC 2.4.7, which requires a visible indicator, so the floor is the standard's and only the exact treatment is open; confirm before ship.
+3. [BLOCKING] CTA pressed fill not shown. Same shape as #1 - a pressed button exists regardless, and a fill or a transform is a value the single default-state image never carried. No default statable.
+4. [NON-BLOCKING] Whether a plan can be unselectable at all - an already-current plan, a sold-out tier - is a flow fact one card image cannot show. Default: no disabled affordance is built until the flow fact lands.
+5. [NON-BLOCKING] No loading state shown - confirm whether choosing a plan blocks on a request. Default: no loading affordance is built. If it does block, this returns as a blocking question, because a spinner then needs a spec nobody has given.
+6. [NON-BLOCKING] No error state shown - confirm whether a failed selection surfaces on this button or elsewhere on the screen. Default: no in-button error affordance is built.
+7. [NON-BLOCKING] No token set was supplied. Default: the three proposed names above, which are stated in section 3 and confirmed against nothing.
 ```
+
+The two blocking questions are the two that could not state a default, and the five non-blocking ones each write theirs out. That is the whole test - "When is an open question blocking?" in the [FAQ](#faq) states it, and section 8 of `SKILL.md` is the rule. Note that #1 and #3 land on the same tag: both are an unshown fill on a state that exists whatever the build does, and a spec that blocked on hover while waving the pressed state through would be sorting by which row it reached first.
 
 ## How it works
 
@@ -115,7 +117,7 @@ Source shows default state only - table below is mostly open questions by design
 - **Component states are checked against a fixed list of eight**: default, hover, focus, active, disabled, loading, empty, error.
 - **Accessibility annotations cite WCAG 2.2 success criteria** by number (SC 1.4.3 text contrast, SC 1.4.11 non-text UI components).
 - **Conflicting evidence is flagged, not resolved.** Two screenshots with different padding for one region produce a documented conflict, not an average - as long as both claim the same theme and breakpoint. The same region at two declared breakpoints, or in light and dark, is a variant carried as two columns in the token map, not a disagreement to resolve.
-- **Every open question is tagged blocking or non-blocking**, so a reviewer can tell if the spec is ready to build.
+- **Every open question is tagged blocking or non-blocking**, so a reviewer can tell if the spec is ready to build. The tag is readable off the line rather than judged: a non-blocking question writes out the default implementation proceeds on, and a default is only statable from a standard the spec already cites or from not building the thing at all. Where neither is available the tag is blocking, which keeps the blocking count a number a reviewer can check instead of a mood.
 - **The assets list is held to the same standard as the rest.** A raster asset's `@1x/@2x/@3x` ladder follows from the target platforms, and a mockup does not name them; a divider or chevron may be an exported file or pure CSS. Both become numbered open questions rather than confident spec lines.
 
 ## How is this different from just asking the model?
@@ -141,6 +143,9 @@ Yes - paste the screenshot with a prompt like "write a handoff spec for this scr
 
 **Can one handoff spec cover mobile and desktop?**
 Yes. Breakpoints of the same screen stay in one file: section 2 gets a subsection per breakpoint, and the token map splits its observed-value column into one column per breakpoint while keeping one row and one token name per property. A padding that steps from 16px to 32px is a variant of one screen, not conflicting evidence - the same handling a light and dark pair of the same screen gets. The component-state table splits the same way: one row per state, with what the source showed carried per breakpoint, so a state shown at one width is never recorded as observed at the other. Accessibility annotations split on that axis too: where the two widths read in a different order, section 6 carries one numbered focus order per breakpoint, while contrast stays one check per theme because a width change does not change color.
+
+**When is an open question blocking?**
+When no default can be stated. The tag is read off the question's own line rather than judged: `NON-BLOCKING` means the line writes out the default implementation proceeds on, and a default is only statable from one of two places - a standard the spec already cites, or not building the thing at all. An unshown focus ring has the first (WCAG 2.2 SC 2.4.7 requires a visible indicator, so the floor is the standard's and only the treatment is open). An unshown disabled state has the second (nothing gets built until someone says whether the state exists in the flow). An unshown hover or pressed fill has neither: the state exists whatever the build does, so there is nothing to leave out, and the color would have to be derived from another color, which is the guess the spine bans. That one is `BLOCKING`. A `NON-BLOCKING` question with no default written out is tagged by feel, and the blocking count in the status line is then a number nobody can check.
 
 **What's the difference between a design handoff spec and a style guide?**
 A style guide documents a design system's tokens in general. A handoff spec documents one screen against that system: which tokens it uses, what's unresolved.

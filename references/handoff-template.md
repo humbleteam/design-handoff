@@ -67,13 +67,14 @@ Read this when you are about to write a spec file. Copy the skeleton below, fill
 | <e.g. card-divider> | `OPEN QUESTION #n` | - | May be a 1px CSS border rather than an exported asset |
 
 ## 8. Open questions
-1. [BLOCKING / NON-BLOCKING] <question, tied to the section it came from>
-2. [BLOCKING / NON-BLOCKING] <question>
+1. [BLOCKING] <question, tied to the section it came from> No default statable: <why neither a cited standard nor leaving it unbuilt is available>
+2. [NON-BLOCKING] <question, tied to the section it came from> Default: <what gets built while the answer is outstanding, and where that default comes from>
 ```
 
 ## Notes on filling this in
 
 - Section numbers in the open-questions list must match the `OPEN QUESTION #n` references used earlier in the spec. Section 7 counts: questions raised in the assets list are collected in section 8 alongside every other one.
+- Every `NON-BLOCKING` line writes out the default implementation proceeds on, in that line. A default comes from a standard the spec already cites or from not building the thing at all; where neither is available the tag is `BLOCKING`, and the line says no default is statable. A `NON-BLOCKING` question with no default written out makes the blocking count in the status line unverifiable.
 - Section 7 holds two values a mockup almost never states - the density ladder, which follows from the target platforms, and whether a visual element is an exported asset or drawn in CSS. Write the default and raise a question rather than presenting either as observed.
 - A component with no plausible interactive state (a static badge, a label) does not get a subsection in section 4 - skip it rather than filling eight rows with `not applicable`.
 - If no token set was supplied for this screen, every row in section 3 reads `NEW-TOKEN` and the spec should say near the top that none of the proposed tokens are confirmed against an existing system.

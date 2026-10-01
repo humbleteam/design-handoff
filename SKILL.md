@@ -93,6 +93,10 @@ Collect every `OPEN QUESTION` raised in sections 2 through 7 into one numbered l
 - `BLOCKING` - implementation cannot proceed correctly without an answer.
 - `NON-BLOCKING` - implementation can proceed with a stated reasonable default, revisit before ship.
 
+The stated default is the whole of the second tag, so write it into the question. `NON-BLOCKING` means the line itself says what gets built while the answer is outstanding, and a default is statable from exactly two places: a standard this spec already cites, or not building the thing at all. An unshown focus ring takes the first - section 6 cites WCAG 2.2 SC 2.4.7, a visible indicator is required, so the floor is the standard's and only the treatment is open. An unshown disabled, loading, or error state takes the second - the question is whether the state exists in the flow, and nothing is built until it is answered. An unshown hover or pressed fill has neither: the state exists whatever the build does, so there is nothing to leave out, and a fill derived from the default fill is the guess the spine bans. That is `BLOCKING`.
+
+Two moves are illegal, and both produce a count nobody can check. A `NON-BLOCKING` question with no default written out is tagged by feel: the reader cannot tell what proceeding looks like, and the line reads as reassurance. A question whose own text says the answer is needed before the build, or before a style can be specified, is `BLOCKING` whatever tag it carries - the sentence and the tag cannot disagree. Sort by the test, not by how the question feels: an unshown hover fill and an unshown pressed fill are the same question twice and take the same tag.
+
 Number continuously across the whole spec (the numbers referenced inline in sections 2-7 must match this list).
 
 The range is 2 through 7, not 2 through 6. Section 7 is where the source is most often silent - target platforms and CSS-versus-asset calls are decisions a mockup does not record - and a question raised there needs the same numbered home as any other. Anything with nowhere to be collected gets written as fact instead, which is the failure this section exists to prevent.
