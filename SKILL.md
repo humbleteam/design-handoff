@@ -56,7 +56,7 @@ For every distinct interactive element (buttons, inputs, cards, nav items, toggl
 
 For each state, mark one of:
 - A concrete spec line (fill, label, border, icon), only if that state is actually visible in the source.
-- `not applicable` with a one-clause reason (a static label has no hover state; a single-item list has no empty state).
+- `not applicable` with a one-clause reason, and the reason is a fact about the artifact rather than about this render of it (a static label has no hover state; a button with a fixed label holds no content that can be empty). A list, a results area or a cart is the other branch however it was photographed - one item today is not a claim that it cannot be empty tomorrow, and whether the content can be absent is the flow fact section 8's `empty` paragraph hands to an open question.
 - `OPEN QUESTION #n` if the state is plausible for this component but isn't shown.
 
 If the source shows only a default state for a whole screen, say that plainly at the top of this section ("Source shows default state only - states table below is mostly open questions by design") rather than padding the table with invented hover and focus colors.
