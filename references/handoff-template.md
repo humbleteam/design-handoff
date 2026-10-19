@@ -58,6 +58,7 @@ Read this when you are about to write a spec file. Copy the skeleton below, fill
   (one numbered list per breakpoint when the breakpoints' reading orders differ, each naming its breakpoint; one list naming the breakpoints it covers when they share an order)
 - Contrast pairs checked:
   - <foreground> on <background> = <ratio> (WCAG 2.2 SC 1.4.3 - needs 4.5:1 normal text / 3:1 large text; SC 1.4.11 for non-text UI components)
+  - <disabled foreground> on <disabled background> = <ratio> - exempt, inactive component (SC 1.4.3 Incidental, SC 1.4.11). Keep the row; a pairing with no row reads as unchecked. Text beside the control is not part of it and is checked normally, and a control that only looks muted while staying operable is active, not exempt.
 
 ## 7. Assets list
 | Asset | Format | Size(s) | Notes |
