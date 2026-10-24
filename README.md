@@ -77,7 +77,8 @@ Excerpt from a spec for a fictional pricing card, default state only, no token s
 ## 3. Token map
 | Property | Observed value | Mapped token | Status |
 |---|---|---|---|
-| Card background | #FFFFFF | - | NEW-TOKEN: `surface` (proposed, no token set supplied) |
+| Card background, and the CTA label | #FFFFFF | - | NEW-TOKEN: `surface` (proposed, no token set supplied) - one value in two roles, so one row |
+| Body text color | #1F2937 | - | NEW-TOKEN: `text-primary` (proposed) |
 | CTA fill | #2563EB | - | NEW-TOKEN: `primary` (proposed, no token set supplied) |
 | Card corner radius | 12px | - | NEW-TOKEN: `radius-lg` (proposed) |
 
@@ -87,7 +88,7 @@ Source shows default state only - table below is mostly open questions by design
 ### CTA button ("Choose plan")
 | State | Visible in source? | Spec |
 |---|---|---|
-| Default | yes | fill `primary`, label 15px/600, 12px vertical padding |
+| Default | yes | fill `primary`, label #FFFFFF 15px/600, 12px vertical padding |
 | Hover | no | OPEN QUESTION #1 |
 | Focus | no | OPEN QUESTION #2 |
 | Active | no | OPEN QUESTION #3 |
@@ -96,6 +97,18 @@ Source shows default state only - table below is mostly open questions by design
 | Empty | no | not applicable - a button with a fixed label holds no content that can be empty |
 | Error | no | OPEN QUESTION #6 |
 
+## 6. Accessibility annotations
+- Landmark roles: the card is a `region` with an accessible name from the tier heading.
+- Accessible names: CTA button - "Choose plan".
+- Focus order: 1) tier heading (not focusable, read order only) 2) CTA button. One list: the
+  source is one breakpoint.
+- Contrast pairs checked:
+  - #1F2937 on #FFFFFF = 14.68:1 - passes (WCAG 2.2 SC 1.4.3, needs 4.5:1 for normal text)
+  - #FFFFFF on #2563EB = 5.17:1 - passes (WCAG 2.2 SC 1.4.3, needs 4.5:1 for normal text)
+  - Disabled CTA: no pairing to check. The state is not in the source - section 4 has it as
+    OPEN QUESTION #4 - so there is no fill and no label color to compute, and marking it exempt
+    would assume the control is inoperable, which the one image never said.
+
 ## 8. Open questions
 1. [BLOCKING] CTA hover fill not shown in source. A hovered button exists whether or not it is styled, so there is nothing to leave unbuilt, and no standard this spec cites sets a hover color - deriving one from `primary` is the guess the spine bans. No default statable.
 2. [NON-BLOCKING] CTA focus ring not shown. Default: a 2px `primary` outline, offset 2px. Section 6 cites WCAG 2.2 SC 2.4.7, which requires a visible indicator, so the floor is the standard's and only the exact treatment is open; confirm before ship.
@@ -103,8 +116,20 @@ Source shows default state only - table below is mostly open questions by design
 4. [NON-BLOCKING] Whether a plan can be unselectable at all - an already-current plan, a sold-out tier - is a flow fact one card image cannot show. Default: no disabled affordance is built until the flow fact lands.
 5. [NON-BLOCKING] No loading state shown - confirm whether choosing a plan blocks on a request. Default: no loading affordance is built. If it does block, this returns as a blocking question, because a spinner then needs a spec nobody has given.
 6. [NON-BLOCKING] No error state shown - confirm whether a failed selection surfaces on this button or elsewhere on the screen. Default: no in-button error affordance is built.
-7. [NON-BLOCKING] No token set was supplied. Default: the three proposed names above, which are stated in section 3 and confirmed against nothing.
+7. [NON-BLOCKING] No token set was supplied. Default: the four proposed names above, which are stated in section 3 and confirmed against nothing.
 ```
+
+Section 6 is where the token map stops being the source. Its four rows hold three distinct
+colors, which cross into six ordered foreground/background combinations; the screen shows
+two. The two came off the evidence instead - the body text sits on the card surface, which
+sections 1 and 2 establish, and the CTA's label sits on its fill, which is the one section 4
+row the source actually filled in. So `text-primary` on `primary` never gets a ratio, because
+no text on this screen is dark grey on blue. The `#FFFFFF` row is the clearest case for why a
+row cannot stand in for a pairing: one value, listed once as section 3 requires, serving as
+both the card surface and the CTA label, so it is the background of one checked pair and the
+foreground of the other and the row itself says nothing about which. The disabled row is the
+other half of the same rule - a state nobody photographed has no pairing, and an exemption
+claimed for it would be a guess about whether the control can be clicked.
 
 The two blocking questions are the two that could not state a default, and the five non-blocking ones each write theirs out. That is the whole test - "When is an open question blocking?" in the [FAQ](#faq) states it, and section 8 of `SKILL.md` is the rule. Note that #1 and #3 land on the same tag: both are an unshown fill on a state that exists whatever the build does, and a spec that blocked on hover while waving the active state through would be sorting by which row it reached first. The Empty row is the other half of the test: a fixed-label button holds no content that can be absent, so the artifact answers that row and it never becomes a question at all.
 
