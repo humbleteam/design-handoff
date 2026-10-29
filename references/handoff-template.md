@@ -27,7 +27,7 @@ Read this when you are about to write a spec file. Copy the skeleton below, fill
 |---|---|---|---|
 | <e.g. Card background> | <e.g. #FFFFFF> | `<token-name>` or `-` | existing / NEW-TOKEN: `<proposed-name>` (proposed) |
 
-(One row per distinct color, font, spacing value, radius, and shadow on the screen. No repeats - one row per property even when the spec carries two themes or two breakpoints; the observed-value column splits instead.)
+(One row per role a token would name - every color, font, spacing value, radius, and shadow on the screen, each role once. One row per property even when the spec carries two themes or two breakpoints; the observed-value column splits instead. One value in two roles is two rows, each with its own proposed name.)
 
 ## 4. Component inventory
 (One subsection per distinct interactive component. If the source shows only one state for the whole screen, say so in a line before the first table.)

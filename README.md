@@ -77,7 +77,8 @@ Excerpt from a spec for a fictional pricing card, default state only, no token s
 ## 3. Token map
 | Property | Observed value | Mapped token | Status |
 |---|---|---|---|
-| Card background, and the CTA label | #FFFFFF | - | NEW-TOKEN: `surface` (proposed, no token set supplied) - one value in two roles, so one row |
+| Card background | #FFFFFF | - | NEW-TOKEN: `surface` (proposed, no token set supplied) |
+| CTA label color | #FFFFFF | - | NEW-TOKEN: `text-on-primary` (proposed) - the same value as `surface` on this screen, in a different role; whether the system ties the two is open question #7 |
 | Body text color | #1F2937 | - | NEW-TOKEN: `text-primary` (proposed) |
 | CTA fill | #2563EB | - | NEW-TOKEN: `primary` (proposed, no token set supplied) |
 | Card corner radius | 12px | - | NEW-TOKEN: `radius-lg` (proposed) |
@@ -116,20 +117,21 @@ Source shows default state only - table below is mostly open questions by design
 4. [NON-BLOCKING] Whether a plan can be unselectable at all - an already-current plan, a sold-out tier - is a flow fact one card image cannot show. Default: no disabled affordance is built until the flow fact lands.
 5. [NON-BLOCKING] No loading state shown - confirm whether choosing a plan blocks on a request. Default: no loading affordance is built. If it does block, this returns as a blocking question, because a spinner then needs a spec nobody has given.
 6. [NON-BLOCKING] No error state shown - confirm whether a failed selection surfaces on this button or elsewhere on the screen. Default: no in-button error affordance is built.
-7. [NON-BLOCKING] No token set was supplied. Default: the four proposed names above, which are stated in section 3 and confirmed against nothing.
+7. [NON-BLOCKING] No token set was supplied. Default: the five proposed names above, which are stated in section 3 and confirmed against nothing - `surface` and `text-on-primary` among them, which hold the same hex in two roles and are proposed as two tokens because nothing in the source says the system ties them.
 ```
 
-Section 6 is where the token map stops being the source. Its four rows hold three distinct
-colors, which cross into six ordered foreground/background combinations; the screen shows
-two. The two came off the evidence instead - the body text sits on the card surface, which
-sections 1 and 2 establish, and the CTA's label sits on its fill, which is the one section 4
-row the source actually filled in. So `text-primary` on `primary` never gets a ratio, because
-no text on this screen is dark grey on blue. The `#FFFFFF` row is the clearest case for why a
-row cannot stand in for a pairing: one value, listed once as section 3 requires, serving as
-both the card surface and the CTA label, so it is the background of one checked pair and the
-foreground of the other and the row itself says nothing about which. The disabled row is the
-other half of the same rule - a state nobody photographed has no pairing, and an exemption
-claimed for it would be a guess about whether the control can be clicked.
+Section 6 is where the token map stops being the source. Its four color rows hold three
+distinct colors, which cross into six ordered foreground/background combinations; the screen
+shows two. The two came off the evidence instead - the body text sits on the card surface,
+which sections 1 and 2 establish, and the CTA's label sits on its fill, which is the one
+section 4 row the source actually filled in. So `text-primary` on `primary` never gets a
+ratio, because no text on this screen is dark grey on blue. The two `#FFFFFF` rows are the
+clearest case for why a row cannot stand in for a pairing: `surface` and `text-on-primary`
+carry one value in two roles, and the screen crosses each with a different partner - the
+surface backs the dark body text, the label sits on the blue fill - so a row names a side and
+never a pair, even with one row per role. The disabled row is the other half of the same
+rule - a state nobody photographed has no pairing, and an exemption claimed for it would be a
+guess about whether the control can be clicked.
 
 The two blocking questions are the two that could not state a default, and the five non-blocking ones each write theirs out. That is the whole test - "When is an open question blocking?" in the [FAQ](#faq) states it, and section 8 of `SKILL.md` is the rule. Note that #1 and #3 land on the same tag: both are an unshown fill on a state that exists whatever the build does, and a spec that blocked on hover while waving the active state through would be sorting by which row it reached first. The Empty row is the other half of the test: a fixed-label button holds no content that can be absent, so the artifact answers that row and it never becomes a question at all.
 
