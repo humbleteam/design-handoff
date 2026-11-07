@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.13.0] - 2026-11-07
+
+- 1.12.0 keyed section 3 by property, so one value in two roles became two rows with two proposed names, and left whether the system should tie them an open question. What that answer does to section 6 was never stated, and section 6 reads its pairs off the screen rather than off the token map, so the two sections had no stated relationship at the one point where they touch.
+- Stated now, in section 6 where the pairs are decided: resolving the question does not reach this section. One name for two roles changes section 3's mapped-token column and moves no pair, because the pairs came off the screen. The ratios do not move either, since one token is only available where both rows already carried that value, which is the coincidence that raised the question in the first place.
+- The trap this is written against is reading one token as one row. The two sides meet different partners, so collapsing the rows or dropping either one deletes a pairing the screen shows, and section 6 already holds that a pairing missing from it reads as one nobody checked - the same gap a missing section 4 row leaves. The README's own example is the sharpest case: `surface` and `text-on-primary` are both `#FFFFFF`, and the two contrast rows are `#1F2937` on `#FFFFFF` and `#FFFFFF` on `#2563EB`, which are two different pairs that one shared token would merge neither of.
+- The other direction is named too: if the roles should diverge instead, that is a value a later screen will show rather than a reading of this one, so this spec's ratios stand and the divergence belongs to the spec written against that screen.
+- Open question #7 carries the matching sentence so the rule and the example agree. No row, name or ratio moved: the token map is still 5 rows and 5 proposed names against the README's `five proposed names`, and both ratios were recomputed from the hexes rather than trusted - #1F2937 on #FFFFFF at 14.68:1 and #FFFFFF on #2563EB at 5.17:1, matching what the example claims. `references/handoff-template.md` needed no change, since its section 6 is a field skeleton and no field moved.
+
 ## [1.12.0] - 2026-10-29
 
 - Section 3 was keyed two ways at once and the two disagree. Its opening sentence asked for every distinct value "exactly once each", which keys the table by value; the multi-condition bullet said "the property appears once, carrying every value the source showed for it", which keys it by property. Each clause is right about the case it was written for - one property with two values across themes needs the property key, and nothing needed the value key until a value turned up in two roles.

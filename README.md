@@ -117,7 +117,7 @@ Source shows default state only - table below is mostly open questions by design
 4. [NON-BLOCKING] Whether a plan can be unselectable at all - an already-current plan, a sold-out tier - is a flow fact one card image cannot show. Default: no disabled affordance is built until the flow fact lands.
 5. [NON-BLOCKING] No loading state shown - confirm whether choosing a plan blocks on a request. Default: no loading affordance is built. If it does block, this returns as a blocking question, because a spinner then needs a spec nobody has given.
 6. [NON-BLOCKING] No error state shown - confirm whether a failed selection surfaces on this button or elsewhere on the screen. Default: no in-button error affordance is built.
-7. [NON-BLOCKING] No token set was supplied. Default: the five proposed names above, which are stated in section 3 and confirmed against nothing - `surface` and `text-on-primary` among them, which hold the same hex in two roles and are proposed as two tokens because nothing in the source says the system ties them.
+7. [NON-BLOCKING] No token set was supplied. Default: the five proposed names above, which are stated in section 3 and confirmed against nothing - `surface` and `text-on-primary` among them, which hold the same hex in two roles and are proposed as two tokens because nothing in the source says the system ties them. Answering it either way leaves section 6 alone: the two contrast rows above are `#1F2937` on `#FFFFFF` and `#FFFFFF` on `#2563EB`, two different pairs read off the screen, so one token for the two roles would rename a column in section 3 and merge neither row.
 ```
 
 Section 6 is where the token map stops being the source. Its four color rows hold three
