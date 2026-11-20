@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.14.0] - 2026-11-20
+
+- The two-roles rule left open whether two roles sharing one value should be tied, but said nothing about a spec with two declared conditions. Roles do not change per theme, so a light-and-dark spec can show two roles sharing a hex in one theme and diverging in the other.
+- Section 3 now states it: divergence in any supplied condition closes the question as not tied, with that theme as the evidence, and the two rows stay. Agreement in every supplied condition keeps the question open. No README example changed, since its spec is single-condition.
+
 ## [1.13.0] - 2026-11-07
 
 - 1.12.0 keyed section 3 by property, so one value in two roles became two rows with two proposed names, and left whether the system should tie them an open question. What that answer does to section 6 was never stated, and section 6 reads its pairs off the screen rather than off the token map, so the two sections had no stated relationship at the one point where they touch.
