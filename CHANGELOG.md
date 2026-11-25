@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.15.0] - 2026-11-25
+
+- New FAQ answer on two screenshots of the same screen with different spacing: a same-condition disagreement is flagged as a conflict with both values named, never averaged or picked; a difference across declared conditions is a variant in the per-condition columns. Matches the section 2 rule in SKILL.md.
+
 ## [1.14.0] - 2026-11-20
 
 - The two-roles rule left open whether two roles sharing one value should be tied, but said nothing about a spec with two declared conditions. Roles do not change per theme, so a light-and-dark spec can show two roles sharing a hex in one theme and diverging in the other.

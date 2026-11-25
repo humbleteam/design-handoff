@@ -179,6 +179,8 @@ A style guide documents a design system's tokens in general. A handoff spec docu
 
 **How many states should I document for a button?**
 Eight, every time - default, hover, focus, active, disabled, loading, empty, error. The count is fixed; what varies is how each row is answered. A state visible in the source gets a spec line, a state the artifact itself rules out gets `not applicable` with a one-clause reason, and everything else becomes a numbered open question. There is no fourth answer, and "this button probably has no loading state" is not one of the three: whether choosing a plan blocks on a request is a flow fact, and a static mockup does not carry it. A whole component can be skipped - a static badge with no interactive affordance gets no table at all - but a row inside a table never is, because a row nobody answered reads exactly like a state nobody needs.
+**What if two screenshots of the same screen show different spacing?**
+The spec says so; it does not average them or pick one. When two sources claim the same theme and the same breakpoint and disagree on a padding or a gap, section 2 flags it as a conflict and names both values, so the designer settles it. When the two sources sit under different declared conditions - 375 and 1440, or light and dark - the difference is not a conflict. It is a variant, and it goes into the per-condition columns of the token map as one row carrying both values.
 
 ## Related skills
 
